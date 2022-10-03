@@ -70,9 +70,7 @@ int main() {
 
     cout << "Entrez un nombre reel, le nombre de bits total et celui de la mantisse \n";
 
-    cin >> number;
-    cin >> totalBits;
-    cin >> totalMantissaBits;
+    cin >> number >> totalBits >> totalMantissaBits;
 
     if (numberIsZero(number, totalBits, totalMantissaBits)) return 0;
 
@@ -108,6 +106,8 @@ int main() {
         for (int i = 0; i < totalMantissaBits; ++i) {
             quotient *= 2;
 
+            if (i == totalMantissaBits - 1) quotient = round(quotient);
+
             if (quotient >= 1) {
                 mantissa.append("1");
                 quotient -= 1;
@@ -120,6 +120,8 @@ int main() {
 
         for (int i = 0; i < totalMantissaBits; ++i) {
             quotient *= 2;
+
+            if (i == totalMantissaBits - 1) quotient = round(quotient);
 
             if (quotient <= -1) {
                 mantissa.append("1");
